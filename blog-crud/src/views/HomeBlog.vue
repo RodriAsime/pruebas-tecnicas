@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { defineAsyncComponent } from 'vue'
-import { getBlogs } from '@/services/blogsApi'
+import { storeToRefs } from 'pinia'
+import { useBlogStore } from '@/stores/blog'
 import HeaderBlog from '@/components/HeaderBlog.vue'
 
 const GridBlogs = defineAsyncComponent(() => import('@/components/GridBlogs.vue'))
 
-const blogs = await getBlogs()
+const { getAllBlogs } = storeToRefs(useBlogStore())
 </script>
 <template>
   <main class="main-content">
     <HeaderBlog />
-    <GridBlogs :blogs="blogs"></GridBlogs>
+    <GridBlogs :blogs="getAllBlogs"></GridBlogs>
   </main>
 </template>
 
