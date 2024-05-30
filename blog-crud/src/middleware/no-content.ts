@@ -1,5 +1,6 @@
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
 import { useBlogStore } from '@/stores/blog'
+import { replaceHyphenToSpace } from '@/helpers/formatText'
 
 export default async function noContent(
   to: RouteLocationNormalized,
@@ -12,8 +13,4 @@ export default async function noContent(
   } else {
     next({ name: 'home' })
   }
-}
-
-function replaceHyphenToSpace(title: string) {
-  return title.replace(/-/g, ' ')
 }
