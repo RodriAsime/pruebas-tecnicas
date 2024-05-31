@@ -19,5 +19,20 @@ export const useBlogStore = defineStore('blog', () => {
     posts.value.push(data)
   }
 
-  return { posts, getAllBlogs, setAllPost, getPostByTitle, setNewPost }
+  const searchPost = (title: string) => {
+    return posts.value.find((post) => post.title === title)
+  }
+
+  const editPost = (title: string, data: Blog) => {
+    const post = searchPost(title)
+
+    if (post) {
+      post.title = data.title
+      post.publish = data.publish
+      post.author = data.author
+      post.content = data.content
+    }
+  }
+
+  return { posts, getAllBlogs, setAllPost, getPostByTitle, setNewPost, editPost }
 })
