@@ -1,2 +1,4 @@
 import Logo from './logo.svg'
-export { Logo }
+import Pencil from './pencil.svg'
+import Save from './save.svg'
+export { Logo, Pencil, Save }
