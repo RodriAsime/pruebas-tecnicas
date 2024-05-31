@@ -1,21 +1,16 @@
-<script setup lang="ts">
-defineProps<{
-  title: string
-  content: string
-  author: string
-  publish: string
-}>()
-</script>
+<script lang="ts" src="./InfoBlogDetail.ts"></script>
 <template>
   <section class="blog-detail">
-    <header class="blog-detail-header">
-      <h1 class="blog-detail__title">{{ title }}</h1>
+    <header class="blog-detail__header">
+      <h1 ref="blogTitle" class="blog-detail__title" :contenteditable="isEditing">{{ title }}</h1>
       <div class="blog-detail__meta-info">
-        <p>{{ author }}</p>
-        <p>{{ publish }}</p>
+        <p ref="blogAuthor" :contenteditable="isEditing">{{ author }}</p>
+        <p ref="blogPublish" :contenteditable="isEditing">{{ publish }}</p>
       </div>
     </header>
-    <article class="blog-detail__content">{{ content }}</article>
+    <article ref="blogContent" class="blog-detail__content" :contenteditable="isEditing">
+      {{ content }}
+    </article>
   </section>
 </template>
 
@@ -24,7 +19,7 @@ defineProps<{
   display: grid;
   gap: 2rem;
 }
-.blog-detail-header {
+.blog-detail__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,5 +37,23 @@ defineProps<{
 }
 .blog-detail__content {
   font-size: 1.2rem;
+}
+
+:is(*)[contenteditable='true'] {
+  border: 0.0625rem solid;
+  outline: none;
+  animation: blink 1s infinite;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--vt-c-text-dark-1);
+  }
 }
 </style>
