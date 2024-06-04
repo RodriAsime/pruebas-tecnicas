@@ -14,10 +14,9 @@ const routes = [
     beforeEnter: noContent
   },
   {
-    path: '/:title/edit',
+    path: '/edit',
     name: 'modify',
-    component: () => import('@/views/ModifyBlog.vue'),
-    beforeEnter: noContent
+    component: () => import('@/views/ModifyBlog.vue')
   },
   {
     path: '/:pathMatch(.*)*',
