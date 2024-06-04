@@ -14,12 +14,12 @@ defineEmits<{
 const isEditing = inject<Boolean>('isEditing')
 </script>
 <template>
-  <section class="hero-blog">
+  <header class="hero-blog">
     <img class="hero-blog__image" :src="Logo" alt="Principal blog image" />
     <MainButton class="hero-blog__edit" @click="$emit('editBlog')">
-      <img :src="isEditing ? Save : Pencil" alt="Pencil icon for edit blog" />
+      <img :src="isEditing ? Save : Pencil" :alt="`${isEditing ? 'Save' : 'Pencil'} icon`" />
     </MainButton>
-  </section>
+  </header>
 </template>
 
 <style scoped>
