@@ -1,10 +1,15 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import MainButton from './MainButton.vue'
+
+const router = useRouter()
 </script>
 <template>
   <header class="header-blogs">
     <h1 class="header-blogs__title">All Blogs</h1>
-    <MainButton class="header-blogs__button">Agregar más</MainButton>
+    <MainButton class="header-blogs__button" @click="router.push({ name: 'modify' })"
+      >Agregar más</MainButton
+    >
   </header>
 </template>
 
