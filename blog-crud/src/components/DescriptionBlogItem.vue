@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineProps<{
   title: string
-  resume: string
+  resume: string | undefined
   publish: string
 }>()
 </script>
